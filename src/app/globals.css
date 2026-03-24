@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0F2B46;
+  --navy-light: #1A3D5C;
+  --gold: #C5A55A;
+  --gold-light: #D4BA7A;
+  --white: #FFFFFF;
+  --light-gray: #F5F5F5;
+  --dark-gray: #2A2A2A;
+  --background: var(--white);
+  --foreground: var(--dark-gray);
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-light-gray: var(--light-gray);
+  --color-dark-gray: var(--dark-gray);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background-color: var(--gold);
+  color: var(--navy);
+}
