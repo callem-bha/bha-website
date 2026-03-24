@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CTA, SITE } from "@/lib/constants";
+import { CtaBlock } from "@/components/ui/cta-block";
+import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,27 +11,39 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <>
-      <section className="bg-navy text-white py-24 px-6">
-        <div className="mx-auto max-w-4xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-gold">About</p>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold">Built by a practitioner, not a commentator.</h1>
+      {/* Hero */}
+      <section className="relative bg-navy overflow-hidden flex items-center min-h-[50vh] py-32 px-4 md:px-8">
+        <div className="relative z-10 mx-auto max-w-[1280px] w-full">
+          <div className="max-w-[800px]">
+            <span className="inline-block px-3 py-1 bg-gold/15 text-gold border border-gold/30 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
+              About
+            </span>
+            <h1 className="text-white">Built by a practitioner, not a commentator.</h1>
+          </div>
         </div>
+        <div className="hero-glow" />
       </section>
 
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-3xl space-y-8">
-          {/* Photo placeholder */}
-          <div className="w-32 h-32 rounded-full bg-light-gray flex items-center justify-center text-dark-gray/30 text-sm">
-            Photo
+      {/* Story */}
+      <section className="py-32 px-4 md:px-8">
+        <div className="mx-auto max-w-[800px]">
+          <div className="flex flex-col md:flex-row gap-12 items-start">
+            {/* Photo placeholder */}
+            <div className="w-40 h-40 rounded-xl bg-light-gray flex-shrink-0 flex items-center justify-center text-dark-gray/30 text-sm">
+              Photo
+            </div>
+
+            <div className="space-y-6 text-lg text-dark-gray/80 leading-relaxed">
+              <p>
+                I&apos;m Callem. I started {SITE.name} because I kept seeing the same pattern: businesses knew AI mattered but had no idea where to start. They&apos;d hire consultants who delivered slide decks, or buy tools that nobody used.
+              </p>
+              <p>
+                I build the systems myself. Not theory — actual AI infrastructure that runs in production, handles real workloads, and saves real money. Every system I build is grounded in specific problems with measurable outcomes.
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-6 text-lg text-dark-gray leading-relaxed">
-            <p>
-              I&apos;m Callem. I started {SITE.name} because I kept seeing the same pattern: businesses knew AI mattered but had no idea where to start. They&apos;d hire consultants who delivered slide decks, or buy tools that nobody used.
-            </p>
-            <p>
-              I build the systems myself. Not theory — actual AI infrastructure that runs in production, handles real workloads, and saves real money. Every system I build is grounded in specific problems with measurable outcomes.
-            </p>
+          <div className="mt-16 space-y-6 text-lg text-dark-gray/80 leading-relaxed">
             <p>
               Before starting BHA, I worked in healthcare marketing where I saw firsthand how much time and money was wasted on manual processes that AI could handle in seconds. I quit my job, took a pay cut from R45K to R15K/month with R18K rent, and built my way back through delivering value.
             </p>
@@ -42,18 +54,35 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-navy text-white py-16 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold">Let&apos;s See What AI Can Do For You</h2>
-          <p className="mt-4 text-white/70">Start with a free AI Growth Audit. No pitch, no obligation — just a clear picture of where AI fits in your business.</p>
-          <Link
-            href={CTA.href}
-            className="mt-8 inline-block rounded-lg bg-gold px-8 py-3.5 text-base font-semibold text-navy hover:bg-gold-light transition-colors"
-          >
-            {CTA.label}
-          </Link>
+      {/* Beliefs */}
+      <section className="py-32 px-4 md:px-8 bg-light-gray">
+        <div className="mx-auto max-w-[1280px]">
+          <span className="text-sm font-semibold uppercase tracking-wider text-gold">What We Believe</span>
+          <h2 className="mt-4 mb-12">How We Think About AI</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { title: "AI is not expensive or complex for SMEs", description: "The barrier is knowing where to start, not the technology itself." },
+              { title: "Waiting is the real risk", description: "Your competitors aren't waiting for AI to 'mature'. Neither should you." },
+              { title: "AI augments teams, not replaces them", description: "The goal is making existing people faster, more accurate, and able to handle more." },
+              { title: "Implementation beats theory", description: "Build something. Learn from doing. Slide decks don't generate revenue." },
+              { title: "You don't need to be technical", description: "You need to understand your business problems clearly. We handle the tech." },
+              { title: "AI solves specific problems", description: "Start with a pain point, not the technology. If there's no clear problem, there's no project." },
+            ].map((belief) => (
+              <div key={belief.title} className="card-lift border border-mid-gray rounded-xl p-8 bg-white hover:border-gold/30">
+                <h3 className="text-xl mb-2">{belief.title}</h3>
+                <p className="text-base text-dark-gray/70">{belief.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <CtaBlock
+        title="Let's see what AI can do for you"
+        description="Start with a free AI Growth Audit. No pitch, no obligation — just a clear picture of where AI fits in your business."
+      />
     </>
   );
 }

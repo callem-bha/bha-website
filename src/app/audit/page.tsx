@@ -40,33 +40,43 @@ export default function Audit() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy text-white py-24 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wider text-gold">Free — Valued at $2,500</p>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold">Your AI Growth Audit</h1>
-          <p className="mt-6 text-lg text-white/70 max-w-2xl mx-auto">
-            A complete analysis of where AI can power your content, lead generation, and sales preparation — with dollar figures attached.
-          </p>
-          <a
-            href="#book"
-            className="mt-10 inline-block rounded-lg bg-gold px-8 py-3.5 text-base font-semibold text-navy hover:bg-gold-light transition-colors"
-          >
-            Book Your Free Audit
-          </a>
+      <section className="relative bg-navy overflow-hidden flex items-center min-h-[60vh] py-32 px-4 md:px-8">
+        <div className="relative z-10 mx-auto max-w-[1280px] w-full">
+          <div className="max-w-[800px] mx-auto text-center">
+            <span className="inline-block px-3 py-1 bg-gold/15 text-gold border border-gold/30 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
+              Free — Valued at $2,500
+            </span>
+            <h1 className="text-white">Your AI Growth Audit</h1>
+            <p className="text-xl text-white/90 mt-4 max-w-2xl mx-auto">
+              A complete analysis of where AI can power your content, lead generation, and sales preparation — with dollar figures attached.
+            </p>
+            <a
+              href="#book"
+              className="btn-lift btn-gold-shadow inline-flex items-center rounded-lg bg-gold px-7 py-3.5 text-base font-medium text-white hover:bg-gold-hover mt-8"
+            >
+              Book Your Free Audit
+            </a>
+          </div>
         </div>
+        <div className="hero-glow" />
       </section>
 
       {/* What you get */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-4xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-gold text-center">What You Get</p>
-          <h2 className="mt-4 text-3xl font-bold text-navy text-center">A 12-18 Page Branded Report</h2>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="py-32 px-4 md:px-8">
+        <div className="mx-auto max-w-[1280px]">
+          <div className="text-center mb-12">
+            <span className="text-sm font-semibold uppercase tracking-wider text-gold">What You Get</span>
+            <h2 className="mt-4">A 12–18 Page Branded Report</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {auditSections.map((section, i) => (
-              <div key={section.title} className="rounded-xl border border-light-gray p-6">
-                <p className="text-sm font-bold text-gold">{String(i + 1).padStart(2, "0")}</p>
-                <h3 className="mt-2 text-lg font-semibold text-navy">{section.title}</h3>
-                <p className="mt-2 text-sm text-dark-gray/70">{section.desc}</p>
+              <div
+                key={section.title}
+                className="card-lift border border-mid-gray rounded-xl p-8 hover:border-gold/30"
+              >
+                <span className="text-sm font-bold text-gold">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="text-xl mt-2 mb-2">{section.title}</h3>
+                <p className="text-base text-dark-gray/70">{section.desc}</p>
               </div>
             ))}
           </div>
@@ -74,44 +84,44 @@ export default function Audit() {
       </section>
 
       {/* How it works */}
-      <section className="bg-light-gray py-24 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-navy">How It Works</h2>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-5 gap-4">
+      <section className="bg-light-gray py-32 px-4 md:px-8">
+        <div className="mx-auto max-w-[1280px] text-center">
+          <h2 className="mb-16">How It Works</h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             {["Book a Call", "Intake Form", "We Research", "Audit Built", "Walkthrough"].map((step, i) => (
               <div key={step} className="flex flex-col items-center">
-                <div className="w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center text-sm font-bold">
+                <div className="w-12 h-12 rounded-full bg-navy text-white flex items-center justify-center text-base font-bold">
                   {i + 1}
                 </div>
-                <p className="mt-3 text-sm font-medium text-navy">{step}</p>
+                <p className="mt-4 text-sm font-semibold text-navy">{step}</p>
               </div>
             ))}
           </div>
-          <p className="mt-8 text-sm text-dark-gray/70">5-8 business days from intake to walkthrough</p>
+          <p className="mt-12 text-sm text-dark-gray/60">5–8 business days from intake to walkthrough</p>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-6">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-bold text-navy text-center">Common Questions</h2>
-          <div className="mt-12 space-y-8">
+      <section className="py-32 px-4 md:px-8">
+        <div className="mx-auto max-w-[800px]">
+          <h2 className="text-center mb-12">Common Questions</h2>
+          <div className="space-y-8">
             {faqs.map((faq) => (
-              <div key={faq.q}>
-                <h3 className="text-lg font-semibold text-navy">{faq.q}</h3>
-                <p className="mt-2 text-dark-gray/70">{faq.a}</p>
+              <div key={faq.q} className="border-b border-mid-gray pb-8">
+                <h3 className="text-xl mb-3">{faq.q}</h3>
+                <p className="text-base text-dark-gray/70 leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Booking — Cal.com embed placeholder */}
-      <section id="book" className="bg-navy text-white py-24 px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-bold">Book Your Free AI Growth Audit</h2>
-          <p className="mt-4 text-white/70">Pick a time that works for you. We&apos;ll send the intake form right after.</p>
-          <div className="mt-8 rounded-xl bg-white/10 p-12 text-white/40 text-sm">
+      {/* Booking placeholder */}
+      <section id="book" className="bg-navy cta-radial py-32 px-4 md:px-8">
+        <div className="mx-auto max-w-[800px] text-center">
+          <h2 className="text-white mb-4">Book Your Free AI Growth Audit</h2>
+          <p className="text-xl text-white/80 mb-8">Pick a time that works for you. We&apos;ll send the intake form right after.</p>
+          <div className="rounded-xl bg-white/10 p-16 text-white/40 text-sm">
             Cal.com booking widget will be embedded here
           </div>
         </div>

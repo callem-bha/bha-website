@@ -9,8 +9,8 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-light-gray">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-[12px] border-b border-mid-gray">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-4 md:px-8 lg:py-5">
         <Link href="/">
           <Image
             src="/BHA - Color logo - no background.png"
@@ -22,19 +22,22 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-dark-gray hover:text-navy transition-colors"
+              className="text-[0.95rem] font-medium text-dark-gray hover:text-gold transition-colors duration-300"
             >
               {link.label}
             </Link>
           ))}
+        </nav>
+
+        <div className="hidden lg:block">
           <Link
             href={CTA.href}
-            className="rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-navy hover:bg-gold-light transition-colors"
+            className="btn-lift btn-gold-shadow inline-flex items-center rounded-lg bg-gold px-7 py-3 text-sm font-medium text-white hover:bg-gold-hover"
           >
             {CTA.label}
           </Link>
@@ -43,28 +46,32 @@ export function Header() {
         {/* Mobile menu button */}
         <button
           type="button"
-          className="md:hidden p-2 text-dark-gray"
+          className="lg:hidden flex flex-col gap-[5px] p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            {mobileOpen ? (
+          {mobileOpen ? (
+            <svg className="h-6 w-6 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+            </svg>
+          ) : (
+            <>
+              <span className="block w-6 h-[2px] bg-navy transition-all duration-300" />
+              <span className="block w-6 h-[2px] bg-navy transition-all duration-300" />
+              <span className="block w-6 h-[2px] bg-navy transition-all duration-300" />
+            </>
+          )}
         </button>
-      </nav>
+      </div>
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-light-gray bg-white px-6 py-4 space-y-4">
+        <div className="lg:hidden border-t border-mid-gray bg-white px-4 py-6 space-y-4 md:px-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="block text-sm font-medium text-dark-gray"
+              className="block text-[0.95rem] font-medium text-dark-gray hover:text-gold"
               onClick={() => setMobileOpen(false)}
             >
               {link.label}
@@ -72,7 +79,7 @@ export function Header() {
           ))}
           <Link
             href={CTA.href}
-            className="block rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-navy text-center"
+            className="block rounded-lg bg-gold px-7 py-3 text-sm font-medium text-white text-center hover:bg-gold-hover"
             onClick={() => setMobileOpen(false)}
           >
             {CTA.label}

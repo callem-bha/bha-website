@@ -1,35 +1,117 @@
 @import "tailwindcss";
 
 :root {
+  /* Brand Colors */
   --navy: #0F2B46;
-  --navy-light: #1A3D5C;
+  --navy-light: #184169;
+  --navy-dark: #091a2a;
   --gold: #C5A55A;
+  --gold-hover: #b39247;
   --gold-light: #D4BA7A;
   --white: #FFFFFF;
   --light-gray: #F5F5F5;
+  --mid-gray: #E0E0E0;
   --dark-gray: #2A2A2A;
-  --background: var(--white);
-  --foreground: var(--dark-gray);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(15, 43, 70, 0.05);
+  --shadow-md: 0 12px 24px rgba(15, 43, 70, 0.08);
+  --shadow-lg: 0 24px 48px rgba(15, 43, 70, 0.12);
 }
 
 @theme inline {
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
+  --color-navy-dark: var(--navy-dark);
   --color-gold: var(--gold);
+  --color-gold-hover: var(--gold-hover);
   --color-gold-light: var(--gold-light);
   --color-light-gray: var(--light-gray);
+  --color-mid-gray: var(--mid-gray);
   --color-dark-gray: var(--dark-gray);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--white);
+  --color-foreground: var(--dark-gray);
   --font-sans: var(--font-inter);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--white);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
   background-color: var(--gold);
   color: var(--navy);
+}
+
+/* Typography scale */
+h1, h2, h3, h4 {
+  color: var(--navy);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h3 { font-size: clamp(1.5rem, 2.5vw, 2rem); }
+h4 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+
+/* Hero glow effect */
+.hero-glow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(197, 165, 90, 0.15) 0%, rgba(15, 43, 70, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* CTA block radial accent */
+.cta-radial {
+  background-image: radial-gradient(circle at 100% 100%, rgba(197, 165, 90, 0.15) 0%, transparent 50%);
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Button hover lift */
+.btn-lift {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.btn-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Gold button shadow */
+.btn-gold-shadow {
+  box-shadow: 0 4px 14px rgba(197, 165, 90, 0.4);
+}
+.btn-gold-shadow:hover {
+  box-shadow: 0 6px 20px rgba(197, 165, 90, 0.5);
+}
+
+/* Social icon circle */
+.social-circle {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.social-circle:hover {
+  background-color: var(--gold);
+  color: var(--navy-dark);
+}
+
+/* Metric number responsive size */
+.metric-number {
+  font-size: clamp(3rem, 5vw, 4.5rem);
 }
